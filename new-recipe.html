@@ -58,6 +58,7 @@
             class="form-control"
             id="recipeNameInput"
             placeholder="Egg on Toast"
+            required
           />
         </div>
         <div class="mb-3">
@@ -67,6 +68,7 @@
             id="recipeDescription"
             rows="2"
             placeholder="Add a short recipe description."
+            required
           ></textarea>
         </div>
         <label for="ingredientsList" class="form-label">Ingredients:</label>
@@ -78,6 +80,7 @@
               class="form-control"
               aria-label="Amount (to the nearest gram)"
               placeholder="Amount"
+              required
             />
             <input
               id="unit"
@@ -85,6 +88,7 @@
               class="form-control"
               aria-label="Unit of measure"
               placeholder="Unit of measure"
+              required
             />
             <input
               id="ingredientName"
@@ -92,6 +96,7 @@
               class="form-control"
               aria-label="Ingredient name"
               placeholder="Ingredient name"
+              required
             />
             <button
               class="btn btn-outline-secondary"
@@ -110,6 +115,7 @@
               id="step-1"
               class="form-control"
               aria-label="Step 1"
+              required
             ></textarea>
             <button
               class="btn btn-outline-secondary"
@@ -120,22 +126,12 @@
             </button>
           </div>
         </div>
-        <div class="form-floating mt-2">
-          <textarea
-            class="form-control"
-            id="log"
-            style="height: 1000px"
-          ></textarea>
-        </div>
+        <button type="submit" class="btn btn-outline-primary">
+          Save recipe
+        </button>
       </form>
     </div>
-    <script>
-      function log(txt) {
-        let logBox = document.getElementById("log");
 
-        logBox.value += txt + "\n";
-      }
-    </script>
     <script src="database.mjs"></script>
     <script type="text/javascript" src="/modules/new-recipe.mjs"></script>
     <!-- Separate Popper and Bootstrap JS -->

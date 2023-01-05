@@ -12,23 +12,29 @@ function addIngredient(source) {
   ingredientsList.insertAdjacentHTML(
     "beforeend",
     `<div class="input-group mb-2" id="${ingredientID}">
-  <input
+    <input
+    id="amount"
     type="number"
     class="form-control"
     aria-label="Amount (to the nearest gram)"
     placeholder="Amount"
+    required
   />
   <input
+    id="unit"
     type="text"
     class="form-control"
     aria-label="Unit of measure"
     placeholder="Unit of measure"
+    required
   />
   <input
+    id="ingredientName"
     type="text"
     class="form-control"
     aria-label="Ingredient name"
     placeholder="Ingredient name"
+    required
   />
   <button
     class="btn btn-outline-secondary"
@@ -54,7 +60,6 @@ function addStep(source) {
   source.setAttribute("onclick", "removeStep(this)");
   source.classList.add("btn-danger");
 
-  let steps = [...stepList.children];
   stepList.insertAdjacentHTML(
     "beforeend",
     `<div class="input-group mb-3">
@@ -63,6 +68,7 @@ function addStep(source) {
     id="step-1"
     class="form-control"
     aria-label="Step 1"
+    required
   ></textarea>
   <button
     class="btn btn-outline-secondary"
@@ -89,5 +95,8 @@ function updateLabel() {
     const label = labels[index];
     label.innerHTML = `Step ${index + 1}`;
   }
-  // labels.forEach((label) => {});
+}
+
+function submit() {
+  
 }

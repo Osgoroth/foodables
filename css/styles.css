@@ -1,0 +1,128 @@
+/**************************************************/
+/*                  Basic Styles                  */
+/**************************************************/
+header {
+    align-items: center;
+    display: flex;
+    height: 20vh;
+    justify-content: center;
+}
+body {
+   
+    font-family: 'opensans', Arial, Helvetica, sans-serif;
+    padding-top: 5vh;
+
+}
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 80vh;
+}
+.add-ingredient-container {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.descriptionText {
+    /* resize: vertical; */
+    max-height: 150px;
+    
+}
+footer {
+    align-items: center;
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+}
+/**************************************************/
+/*                   Topography                   */
+/**************************************************/
+
+/**************************************************/
+/*                     Buttons                    */
+/**************************************************/
+.btn.btn-success.add-ingredient-btn {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: fit-content;
+    justify-content: center;
+    width: fit-content;
+
+
+}
+.btn.btn-danger.remove-ingredient-btn {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 38px;
+    justify-content: center;
+    width: 38px;
+
+}
+/**************************************************/
+/*                     Forms                      */
+/**************************************************/
+textarea#log {
+    
+    height: 1000px;
+}
+/**************************************************/
+/*                   Navigation                   */
+/**************************************************/
+
+
+/**************************************************/
+/*                 Media Queries                  */
+/**************************************************/
+
+/* // X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+   
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    
+ }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+   
+ }
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    
+ }
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+   
+ }
+
+@media print {
+    body {
+        font-size: 12pt;
+    }
+
+    .box {
+        padding: 0.5cm ;
+    }
+}
+
+
+
+
+
+
+

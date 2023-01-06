@@ -52,13 +52,12 @@
     <div class="container-sm mt-5">
       <form>
         <div class="mb-3">
-          <label for="recipeNameInput" class="form-label">Recipe name:</label>
+          <label for="recipeName" class="form-label">Recipe name:</label>
           <input
             type="text"
             class="form-control"
-            id="recipeNameInput"
+            id="recipeName"
             placeholder="Egg on Toast"
-            required
           />
         </div>
         <div class="mb-3">
@@ -68,7 +67,6 @@
             id="recipeDescription"
             rows="2"
             placeholder="Add a short recipe description."
-            required
           ></textarea>
         </div>
         <label for="ingredientsList" class="form-label">Ingredients:</label>
@@ -80,7 +78,6 @@
               class="form-control"
               aria-label="Amount (to the nearest gram)"
               placeholder="Amount"
-              required
             />
             <input
               id="unit"
@@ -88,7 +85,6 @@
               class="form-control"
               aria-label="Unit of measure"
               placeholder="Unit of measure"
-              required
             />
             <input
               id="ingredientName"
@@ -96,7 +92,6 @@
               class="form-control"
               aria-label="Ingredient name"
               placeholder="Ingredient name"
-              required
             />
             <button
               class="btn btn-outline-secondary"
@@ -112,10 +107,9 @@
           <div class="input-group mb-3">
             <span class="input-group-text stepLabel">Step 1</span>
             <textarea
-              id="step-1"
+              id="step"
               class="form-control"
               aria-label="Step 1"
-              required
             ></textarea>
             <button
               class="btn btn-outline-secondary"
@@ -126,7 +120,11 @@
             </button>
           </div>
         </div>
-        <button type="submit" class="btn btn-outline-primary">
+        <button
+          type="submit"
+          class="btn btn-outline-primary"
+          onclick="saveRecipe()"
+        >
           Save recipe
         </button>
       </form>

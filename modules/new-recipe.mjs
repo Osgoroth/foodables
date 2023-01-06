@@ -65,7 +65,7 @@ function addStep(source) {
     `<div class="input-group mb-3">
   <span class="input-group-text stepLabel">Step 2</span>
   <textarea
-    id="step-1"
+    id="step"
     class="form-control"
     aria-label="Step 1"
     required
@@ -97,6 +97,56 @@ function updateLabel() {
   }
 }
 
-function submit() {
-  
+function saveRecipe() {
+  // Ingredients are an array of ingredient arrays which contain ["quantity","unit","name"]
+  //    {
+  //       name: "Spaghetti",
+  //       ingredients: [
+  //         ["quantity", "unit", "tomato"],
+  //         ["quantity", "unit", "spaghetti"],
+  //         ["quantity", "unit", "beef"],
+  //       ],
+  //       method: "mix furiosly",
+  //     }
+  db.open().catch(function (err) {
+    console.error("Failed to open db: " + (err.stack || err));
+  });
+
+  db.recipes
+    .put({
+      name: document.querySelector("#recipeName").value,
+      description: document.querySelector("#recipeDescription").value,
+      ingredients: getIngredients(),
+      method: getMethod(),
+    })
+    .catch(function (err) {
+      console.error("Failed to add recipe: " + (err.stack || err));
+    });
+}
+
+function getIngredients() {
+  let ingredients = [];
+  let ingredientList = [...document.querySelector("#ingredientsList").children];
+  for (let index = 0; index < ingredientList.length; index++) {
+    const ingredient = ingredientList[index];
+    ingredients.push([
+      ingredient.querySelector("#amount").value,
+      ingredient.querySelector("#unit").value,
+      ingredient.querySelector("#ingredientName").value,
+    ]);
+  }
+  return ingredients;
+}
+
+function getMethod() {
+  let method = [];
+  let steps = [...document.querySelector("#methodList").children];
+  for (let index = 0; index < steps.length; index++) {
+    const step = steps[index];
+    method.push([
+      step.querySelector(".stepLabel").innerHTML,
+      step.querySelector("#step").value,
+    ]);
+  }
+  return method;
 }

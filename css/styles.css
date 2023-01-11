@@ -13,7 +13,7 @@ body {
     padding-top: 5vh;
 
 }
-.container {
+/* .container {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -29,8 +29,12 @@ body {
 }
 .descriptionText {
     /* resize: vertical; */
-    max-height: 150px;
+    /* max-height: 150px; */
     
+/* } */ 
+
+.grid {
+    display: flex;
 }
 footer {
     align-items: center;
@@ -71,8 +75,14 @@ footer {
 /**************************************************/
 textarea#log {
     
-    height: 1000px;
+    height: 500px;
 }
+
+/**************************************************/
+/*                     Cards                      */
+/**************************************************/
+
+
 /**************************************************/
 /*                   Navigation                   */
 /**************************************************/
@@ -87,13 +97,12 @@ textarea#log {
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
-   
- }
-
+    
+}
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
     
- }
+ }  
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 

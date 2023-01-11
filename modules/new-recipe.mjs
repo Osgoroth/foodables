@@ -1,7 +1,6 @@
 let ingredientID = 0;
 let ingredientsList = document.getElementById("ingredientsList");
 let stepList = document.getElementById("methodList");
-let addIngredientButton = document.getElementById("addButton");
 
 function addIngredient(source) {
   ingredientID++;

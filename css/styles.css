@@ -9,39 +9,12 @@ header {
 }
 body {
    
-    font-family: 'opensans', Arial, Helvetica, sans-serif;
-    padding-top: 5vh;
+    /* font-family: 'opensans', Arial, Helvetica, sans-serif; */
+    min-height: 75rem;
+    padding-top: 4.5rem;
 
-}
-/* .container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: 80vh;
-}
-.add-ingredient-container {
-    align-items: flex-end;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    
-}
-.descriptionText {
-    /* resize: vertical; */
-    /* max-height: 150px; */
-    
-/* } */ 
+} 
 
-.grid {
-    display: flex;
-}
-footer {
-    align-items: center;
-    display: flex;
-    height: 10vh;
-    justify-content: center;
-}
 /**************************************************/
 /*                   Topography                   */
 /**************************************************/
@@ -49,27 +22,7 @@ footer {
 /**************************************************/
 /*                     Buttons                    */
 /**************************************************/
-.btn.btn-success.add-ingredient-btn {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    height: fit-content;
-    justify-content: center;
-    width: fit-content;
 
-
-}
-.btn.btn-danger.remove-ingredient-btn {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: 38px;
-    justify-content: center;
-    width: 38px;
-
-}
 /**************************************************/
 /*                     Forms                      */
 /**************************************************/
@@ -86,7 +39,6 @@ textarea#log {
 /**************************************************/
 /*                   Navigation                   */
 /**************************************************/
-
 
 /**************************************************/
 /*                 Media Queries                  */

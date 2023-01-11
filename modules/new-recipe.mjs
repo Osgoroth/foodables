@@ -4,8 +4,9 @@ let stepList = document.getElementById("methodList");
 
 function addIngredient(source) {
   ingredientID++;
-  source.innerText = "-";
+  source.innerHTML = '<i class="bi bi-trash3"></i>';
   source.setAttribute("onclick", "removeIngredient(this)");
+  source.classList.remove("btn-outline-secondary");
   source.classList.add("btn-danger");
 
   ingredientsList.insertAdjacentHTML(
@@ -41,7 +42,7 @@ function addIngredient(source) {
     onclick='addIngredient(this)'
     
   >
-    +
+  <i class="bi bi-plus"></i>
   </button>
   </div>`
   );
@@ -55,28 +56,29 @@ function removeIngredient(source) {
 }
 
 function addStep(source) {
-  source.innerText = "-";
+  source.innerHTML = '<i class="bi bi-trash3"></i>';
   source.setAttribute("onclick", "removeStep(this)");
+  source.classList.remove("btn-outline-secondary");
   source.classList.add("btn-danger");
 
   stepList.insertAdjacentHTML(
     "beforeend",
     `<div class="input-group mb-3">
-  <span class="input-group-text stepLabel">Step 2</span>
-  <textarea
-    id="step"
-    class="form-control"
-    aria-label="Step 1"
-    required
-  ></textarea>
-  <button
-    class="btn btn-outline-secondary"
-    type="button"
-    onclick="addStep(this)"
-  >
-    +
-  </button>
-</div>`
+        <span class="input-group-text stepLabel">Step 2</span>
+        <textarea
+          id="step"
+          class="form-control"
+          aria-label="Step 1"
+          required
+        ></textarea>
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          onclick="addStep(this)"
+        >
+      <i class="bi bi-plus"></i>
+      </button>
+    </div>`
   );
   updateLabel();
 }

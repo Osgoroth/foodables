@@ -53,7 +53,9 @@ textarea#log {
 }
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-    
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
  }  
 
 /* // Large devices (desktops, 992px and up) */
@@ -80,6 +82,14 @@ textarea#log {
         padding: 0.5cm ;
     }
 }
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
 
 
 

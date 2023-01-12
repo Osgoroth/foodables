@@ -24,6 +24,7 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
 
     <title>Foodables</title>
+    <link rel="icon" type="image/x-icon" href="/images/egg-fried.svg">
   </head>
   <body>
     <nav class="navbar navbar-expand-md fixed-top bg-dark" data-bs-theme="dark">
@@ -53,58 +54,20 @@
       </div>
     </nav>
 
-    <main class="container">
+    <main>
       
-        <div class="row mb-2">
-          <div class="col">
-            <button class="btn btn-outline-secondary" type="button">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-          </div>
-          <div class="col">
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Recipes
-              </button>
-              <ul
-                id="recipe-dropdown"
-                class="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                <!-- <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>-->
-                <li>
-                  <a id="0" class="dropdown-item" href="#">Add a recipe</a>
-                </li>
-              </ul>
+        <!-- Recipes view -->
+        <div class="album bg-light">
+          <div class="container">
+            <div id="recipeCards" class="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-2">
+              
+              </div>
             </div>
           </div>
-          <div class="col">
-            <button id="addRecipes" type="button" class="btn btn-dark">
-              Add Recipes
-            </button>
-          </div>
-          <div class="col">
-            <button id="clearDB" type="button" class="btn btn-dark">
-              Clear DB
-            </button>
-          </div>
         </div>
-        <!-- Recipes view -->
-        <div class="row">
-          <div
-            id="recipeCards"
-            class="row row-cols-md-auto row-cols-sm-2 row-cols-md-3 g-2 g-lg-3"
-          ></div>
-        </div>
+       
         <!-- Individial recipe view -->
-        <div class="container visible" style="border: 5px solid black">
+        <div class="container invisible" style="border: 5px solid black">
           <!-- Info  -->
           <div
             id="info"
@@ -121,7 +84,7 @@
           <!-- Ingredients  -->
           <div
             id="method"
-            class="container-sm visible"
+            class="container-sm invisible"
             style="border: 5px solid violet"
           >
             <h2>Ingredients</h2>
@@ -129,7 +92,7 @@
           <!-- Method -->
           <div
             id="method"
-            class="container-sm visible"
+            class="container-sm invisible"
             style="border: 5px solid orange"
           >
             <h2>Method</h2>

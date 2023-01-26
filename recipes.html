@@ -24,116 +24,200 @@
     <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
 
     <title>Foodables</title>
-    <link rel="icon" type="image/x-icon" href="/images/egg-fried.svg">
+    <link rel="icon" type="image/x-icon" href="/images/egg-fried.svg" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-md fixed-top bg-dark" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Foodables</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <header>
+      <nav
+        class="navbar navbar-expand-lg fixed-top bg-dark"
+        data-bs-theme="dark"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Foodables </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" href="./index.html">Home</a>
+              <a class="nav-link" href="./new-recipe.html">New Recipe</a>
+              <a class="nav-link" href="./recipes.html">Recipes</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- Recipes album -->
+      <div class="album bg-light recipe-album">
+        <div class="container">
+          <div
+            id="recipeCards"
+            class="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-2"
+          ></div>
+        </div>
+      </div>
+      <!-- Recipe  nav-->
+      <ul
+        class="nav nav-tabs nav-fill justify-content-center align-content-center bg-dark recipe-nav fixed-bottom visually-hidden"
+        id="recipeTabs"
+        role="tablist"
+        data-bs-theme="dark"
+      >
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="info-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#info-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="home-tab-pane"
+            aria-selected="true"
+          >
+            <i class="bi bi-info"></i> Info
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="profile-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#profile-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="profile-tab-pane"
+            aria-selected="false"
+          >
+            <i class="bi bi-list-columns"></i> Ingredients
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="contact-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#contact-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="contact-tab-pane"
+            aria-selected="false"
+          >
+            <i class="bi bi-list-ol"></i> Method
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="info-tab-pane"
+          role="tabpanel"
+          aria-labelledby="info-tab"
+          tabindex="0"
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="./index.html"
-              >Home</a
-            >
-            <a class="nav-link" href="./new-recipe.html">New Recipe</a>
-            <a class="nav-link" href="./recipes.html">Recipes</a>
-            
+          <div class="container-sm recipe-info"></div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="profile-tab-pane"
+          role="tabpanel"
+          aria-labelledby="ingredients-tab"
+          tabindex="0"
+        >
+          <div class="container-sm recipe-ingredients">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Qty.</th>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Name</th>
+                </tr>
+              </thead>
+              <tbody class="ingredients-table"></tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="contact-tab-pane"
+          role="tabpanel"
+          aria-labelledby="method-tab"
+          tabindex="0"
+        >
+          <div class="container-sm recipe-method">
+            <table class="table">
+              <thead>
+               
+              </thead>
+              <tbody class="method-table"></tbody>
+            </table>
           </div>
         </div>
       </div>
-    </nav>
 
-    <main>
-      
-        <!-- Recipes view -->
-        <div class="album bg-light">
-          <div class="container">
-            <div id="recipeCards" class="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-2">
-              
-              </div>
-            </div>
-          </div>
-        </div>
-       
-        <!-- Individial recipe view -->
-        <div class="container invisible" style="border: 5px solid black">
-          <!-- Info  -->
-          <div
-            id="info"
-            class="container-sm"
-            style="border: 5px solid blueviolet"
-          >
-            <h1 id="recipeName">Recipe Name</h1>
-            <p id="recipeDescription">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. In hic
-              totam tempora, quo voluptatem reprehenderit possimus esse rem ipsa
-              dolorum?
-            </p>
-          </div>
-          <!-- Ingredients  -->
-          <div
-            id="method"
-            class="container-sm invisible"
-            style="border: 5px solid violet"
-          >
-            <h2>Ingredients</h2>
-          </div>
-          <!-- Method -->
-          <div
-            id="method"
-            class="container-sm invisible"
-            style="border: 5px solid orange"
-          >
-            <h2>Method</h2>
-          </div>
-          <!-- Navbar -->
-          <!-- <nav class="navbar fixed-bottom bg-body-tertiary">
-            <div class="container-sm justify-content-center">
-              <div class="row">
-                <div class="col">
-                  <button type="button" class="btn btn-outline-secondary">
-                    Info
-                  </button>
-                </div>
-                <div class="col">
-                  <button type="button" class="btn btn-outline-secondary">
-                    Ingredients
-                  </button>
-                </div>
-                <dic class="col">
-                  <button type="button" class="btn btn-outline-secondary">
-                    Method
-                  </button>
-                </dic>
-              </div>
-            </div>
-          </nav>
-        </div> -->
-        <!-- <textarea
-              class="form-control"
-              id="log"
-              style="height: 1000px"
-            ></textarea> -->
-      
+      <!-- 
+        
+        
+      <div class="container-sm recipe-info visually-hidden"></div>
+      <div class="container-sm recipe-ingredients visually-hidden"></div>
+      <div class="container-sm recipe-method visually-hidden"></div>
+        
+        <ul
+        class="visually-hidden recipe-nav nav nav-fill nav-tabs fixed-bottom justify-content-center align-content-center bg-dark"
+        id="myTab"
+        role="tablist"
+        data-bs-theme="dark"
+      >
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="info-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#home-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="home-tab-pane"
+            aria-selected="true"
+          ></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="ingredients-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#profile-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="profile-tab-pane"
+            aria-selected="false"
+          ></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="method-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#contact-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="contact-tab-pane"
+            aria-selected="false"
+            onclick="toggleVisibility(`.recipe-method`)"
+          ></button>
+        </li>
+      </ul> -->
     </main>
-    <script>
-      function log(txt) {
-        let logBox = document.getElementById("log");
-        // logBox.value = "";
-        logBox.value += txt + "\n";
-      }
-    </script>
+
+    <footer></footer>
+
     <script src="/modules/database.mjs"></script>
     <script src="/modules/recipes.mjs"></script>
 

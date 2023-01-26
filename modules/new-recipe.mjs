@@ -99,16 +99,6 @@ function updateLabel() {
 }
 
 function saveRecipe() {
-  // Ingredients are an array of ingredient arrays which contain ["quantity","unit","name"]
-  //    {
-  //       name: "Spaghetti",
-  //       ingredients: [
-  //         ["quantity", "unit", "tomato"],
-  //         ["quantity", "unit", "spaghetti"],
-  //         ["quantity", "unit", "beef"],
-  //       ],
-  //       method: "mix furiosly",
-  //     }
   db.open().catch(function (err) {
     console.error("Failed to open db: " + (err.stack || err));
   });

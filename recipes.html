@@ -29,7 +29,7 @@
   <body>
     <header>
       <nav
-        class="navbar navbar-expand-lg fixed-top bg-dark"
+        class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"
         data-bs-theme="dark"
       >
         <div class="container-fluid">
@@ -65,16 +65,29 @@
           ></div>
         </div>
       </div>
+
       <!-- Recipe  nav-->
+
+      <!-- Back button -->
+      <a
+        class="btn btn-dark rounded-circle shadow visually-hidden"
+        href="./recipes.html"
+        id="back-button"
+        data-bs-theme="dark"
+        role="button"
+      >
+        <i class="bi bi-chevron-left"></i>
+      </a>
+
       <ul
-        class="nav nav-tabs nav-fill justify-content-center align-content-center bg-dark recipe-nav fixed-bottom visually-hidden"
+        class="nav nav-tabs nav-fill justify-content-center navbar-dark bg-dark align-content-center recipe-nav fixed-bottom visually-hidden"
         id="recipeTabs"
         role="tablist"
         data-bs-theme="dark"
       >
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link active"
+            class="nav-link link-light active"
             id="info-tab"
             data-bs-toggle="tab"
             data-bs-target="#info-tab-pane"
@@ -88,13 +101,13 @@
         </li>
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link"
-            id="profile-tab"
+            class="nav-link link-light"
+            id="ingredients-tab"
             data-bs-toggle="tab"
-            data-bs-target="#profile-tab-pane"
+            data-bs-target="#ingredients-tab-pane"
             type="button"
             role="tab"
-            aria-controls="profile-tab-pane"
+            aria-controls="ingredients-tab-pane"
             aria-selected="false"
           >
             <i class="bi bi-list-columns"></i> Ingredients
@@ -102,20 +115,20 @@
         </li>
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link"
-            id="contact-tab"
+            class="nav-link link-light"
+            id="method-tab"
             data-bs-toggle="tab"
-            data-bs-target="#contact-tab-pane"
+            data-bs-target="#method-tab-pane"
             type="button"
             role="tab"
-            aria-controls="contact-tab-pane"
+            aria-controls="method-tab-pane"
             aria-selected="false"
           >
             <i class="bi bi-list-ol"></i> Method
           </button>
         </li>
       </ul>
-      <div class="tab-content" id="myTabContent">
+      <div class="tab-content" id="recipeTabs">
         <div
           class="tab-pane fade show active"
           id="info-tab-pane"
@@ -127,17 +140,16 @@
         </div>
         <div
           class="tab-pane fade"
-          id="profile-tab-pane"
+          id="ingredients-tab-pane"
           role="tabpanel"
           aria-labelledby="ingredients-tab"
           tabindex="0"
         >
           <div class="container-sm recipe-ingredients">
-            <table class="table">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">Qty.</th>
-                  <th scope="col">Unit</th>
                   <th scope="col">Name</th>
                 </tr>
               </thead>
@@ -147,73 +159,19 @@
         </div>
         <div
           class="tab-pane fade"
-          id="contact-tab-pane"
+          id="method-tab-pane"
           role="tabpanel"
           aria-labelledby="method-tab"
           tabindex="0"
         >
           <div class="container-sm recipe-method">
-            <table class="table">
-              <thead>
-               
-              </thead>
+            <table class="table table-striped">
+              <thead></thead>
               <tbody class="method-table"></tbody>
             </table>
           </div>
         </div>
       </div>
-
-      <!-- 
-        
-        
-      <div class="container-sm recipe-info visually-hidden"></div>
-      <div class="container-sm recipe-ingredients visually-hidden"></div>
-      <div class="container-sm recipe-method visually-hidden"></div>
-        
-        <ul
-        class="visually-hidden recipe-nav nav nav-fill nav-tabs fixed-bottom justify-content-center align-content-center bg-dark"
-        id="myTab"
-        role="tablist"
-        data-bs-theme="dark"
-      >
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link active"
-            id="info-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#home-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="home-tab-pane"
-            aria-selected="true"
-          ></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="ingredients-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#profile-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="profile-tab-pane"
-            aria-selected="false"
-          ></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="method-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#contact-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="contact-tab-pane"
-            aria-selected="false"
-            onclick="toggleVisibility(`.recipe-method`)"
-          ></button>
-        </li>
-      </ul> -->
     </main>
 
     <footer></footer>

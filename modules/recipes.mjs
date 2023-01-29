@@ -40,7 +40,7 @@ function viewRecipe(id) {
       // Info
       // hide the album view and show nav and recipe info
       // other elements are still hidden
-      toggleVisibility(".recipe-album", ".recipe-nav");
+      toggleVisibility(".recipe-album", ".recipe-nav", "#back-button");
 
       let recipeInfo = /*html*/ `<div class="row"><h1>${recipe.name}</h1></div>
         <div class="row"><p>${recipe.description}</p></div>`;
@@ -53,8 +53,8 @@ function viewRecipe(id) {
         (ingredient) =>
           (ingredientRows += /*html*/ `
             <tr>
-              <td>${ingredient[0]}</td>
-              <td>${ingredient[1]}</td>
+              <td>${ingredient[0]} ${ingredient[1]} </td>
+              
               <td>${ingredient[2]}</td>
             </tr>`)
       );
@@ -67,7 +67,7 @@ function viewRecipe(id) {
         (step) =>
           (methodRows += /*html*/ `
             <tr>
-              <td>${step[0]}</td>
+              <td>${step[0]}:</td>
               <td>${step[1]}</td>
               
             </tr>`)

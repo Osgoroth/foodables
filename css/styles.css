@@ -6,8 +6,9 @@
 body {
    
     /* font-family: 'opensans', Arial, Helvetica, sans-serif; */
-    min-height: 75rem;
+    /* min-height: 75rem; */
     padding-top: 4.5rem;
+    
 
 } 
 
@@ -19,7 +20,7 @@ body {
 /*                     Buttons                    */
 /**************************************************/
 /* Back button */
-#back-button {
+.floating-button {
     position: fixed;
     bottom: 60px;
     right: 10px;
@@ -34,6 +35,7 @@ body {
 /**************************************************/
 .recipe-card:hover {
     border: 1px solid black;
+    
 
 }
 

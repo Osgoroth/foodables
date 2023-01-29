@@ -26,7 +26,7 @@
     <title>Foodables</title>
     <link rel="icon" type="image/x-icon" href="/images/egg-fried.svg" />
   </head>
-  <body>
+  <body class="bg-body-tertiary">
     <header>
       <nav
         class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"
@@ -58,11 +58,8 @@
     <main>
       <!-- Recipes album -->
       <div class="album bg-light recipe-album">
-        <div class="container">
-          <div
-            id="recipeCards"
-            class="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-2"
-          ></div>
+        <div class="container-sm">
+          <div id="recipeCards" class="row row-cols-2 row-cols-md-5 g-2"></div>
         </div>
       </div>
 
@@ -70,9 +67,8 @@
 
       <!-- Back button -->
       <a
-        class="btn btn-dark rounded-circle shadow visually-hidden"
+        class="btn btn-dark rounded-circle shadow visually-hidden floating-button"
         href="./recipes.html"
-        id="back-button"
         data-bs-theme="dark"
         role="button"
       >

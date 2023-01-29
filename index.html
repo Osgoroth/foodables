@@ -25,8 +25,11 @@
     <title>Foodables</title>
     <link rel="icon" type="image/x-icon" href="/images/egg-fried.svg" />
   </head>
-  <body>
-    <nav class="navbar navbar-expand-md fixed-top bg-dark" data-bs-theme="dark">
+  <body class="bg-body-tertiary">
+    <nav
+      class="navbar navbar-expand-md fixed-top navbar-dark bg-dark"
+      data-bs-theme="dark"
+    >
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Foodables</a>
         <button
@@ -49,6 +52,20 @@
         </div>
       </div>
     </nav>
+    <div class="container-sm">
+      <div
+        class="btn-group-vertical btn-group-lg d-block vw-75 position-absolute top-50 start-50 translate-middle"
+        role="group"
+        aria-label="Vertical button group"
+      >
+        <a type="button" class="btn btn-dark" href="./new-recipe.html"
+          >New Recipe</a
+        >
+        <a type="button" class="btn btn-dark" href="./recipes.html"
+          >View Recipes</a
+        >
+      </div>
+    </div>
 
     <!-- Separate Popper and Bootstrap JS -->
     <script

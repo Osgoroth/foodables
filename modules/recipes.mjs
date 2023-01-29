@@ -12,14 +12,15 @@ function loadRecipes() {
     .toArray()
     .then((recipes) => {
       recipes.forEach((recipe) => {
-        const recipeCard = /*html*/ `<div class="col" onclick=viewRecipe(${recipe.id})>
-        <div class="card shadow-sm recipe-card">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="125px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-          <div class="card-body">
-          <h6 class="card-title">${recipe.name}</h>
+        const recipeCard = /*html*/ `
+        <div class="col" onclick=viewRecipe(${recipe.id})>
+          <div class="card h-100 shadow-sm recipe-card ">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="125px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card-body">
+              <p class="card-text py-0">${recipe.name}</p>
+            </div>
           </div>
-        </div>
-      </div>`;
+        </div>`;
         recipeCardsContainer.insertAdjacentHTML("beforeend", recipeCard);
       });
     })
@@ -40,7 +41,7 @@ function viewRecipe(id) {
       // Info
       // hide the album view and show nav and recipe info
       // other elements are still hidden
-      toggleVisibility(".recipe-album", ".recipe-nav", "#back-button");
+      toggleVisibility(".recipe-album", ".recipe-nav", ".floating-button");
 
       let recipeInfo = /*html*/ `<div class="row"><h1>${recipe.name}</h1></div>
         <div class="row"><p>${recipe.description}</p></div>`;

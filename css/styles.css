@@ -9,6 +9,7 @@ body {
     /* min-height: 75rem; */
     padding-top: 4.5rem;
     
+    
 
 } 
 
@@ -38,6 +39,22 @@ body {
     
 
 }
+.card {
+    --bs-card-spacer-y: 0.25rem;
+    --bs-card-spacer-x: 0.5rem;
+}
+
+.card-text {
+    font-size: 0.75rem;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
 
 
 /**************************************************/
@@ -50,7 +67,9 @@ body {
 
 /* // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap */
-
+@media (max-width: 480px) { 
+    
+}
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
     
@@ -60,6 +79,7 @@ body {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
+      
  }  
 
 /* // Large devices (desktops, 992px and up) */
@@ -87,13 +107,7 @@ body {
     }
 }
 
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
+
 
 
 

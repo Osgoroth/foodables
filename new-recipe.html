@@ -59,6 +59,7 @@
             class="form-control"
             id="recipeName"
             placeholder="Egg on Toast"
+            required
           />
         </div>
         <div class="mb-3">
@@ -79,12 +80,15 @@
               class="form-control"
               aria-label="Amount (to the nearest gram)"
               placeholder="Amount"
+              required
             />
+
             <input
               class="form-control"
               list="datalistOptions"
               id="unit"
               placeholder="Type to search..."
+              required
             />
             <datalist id="datalistOptions">
               <option value="gram/s"></option>
@@ -92,20 +96,13 @@
               <option value="millilitres"></option>
               <option value="litres"></option>
             </datalist>
-
-            <!-- <input
-              id="unit"
-              type="text"
-              class="form-control"
-              aria-label="Unit of measure"
-              placeholder="Unit of measure"
-            /> -->
             <input
               id="ingredientName"
               type="text"
               class="form-control"
               aria-label="Ingredient name"
               placeholder="Ingredient name"
+              required
             />
             <button
               class="btn btn-outline-secondary"
@@ -124,7 +121,9 @@
               id="step"
               class="form-control"
               aria-label="Step 1"
+              required
             ></textarea>
+
             <button
               class="btn btn-outline-secondary"
               type="button"
@@ -147,7 +146,9 @@
           data-bs-theme="dark"
           role="button"
         >
-          <i class="bi bi-house position-absolute top-50 start-50 translate-middle"></i>
+          <i
+            class="bi bi-house position-absolute top-50 start-50 translate-middle"
+          ></i>
         </a>
       </form>
     </main>

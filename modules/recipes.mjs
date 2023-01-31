@@ -1,4 +1,3 @@
-include 
 
 db.open().catch(function (err) {
   alert("Failed to open db: " + (err.stack || err));

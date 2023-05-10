@@ -7,7 +7,11 @@ function LikeButton() {
     return "You liked this!";
   }
 
-  return <button onClick={() => setLiked(true)}>Like</button>;
+  return (
+    <button className="btn btn-primary" onClick={() => setLiked(true)}>
+      Like
+    </button>
+  );
 }
 
 const rootNode = document.getElementById("like-button-root");

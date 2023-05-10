@@ -14,7 +14,7 @@ function LikeButton() {
 
   return React.createElement(
     "button",
-    { onClick: function onClick() {
+    { className: "btn btn-primary", onClick: function onClick() {
         return setLiked(true);
       } },
     "Like"

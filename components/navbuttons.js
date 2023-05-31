@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, VStack } from "@chakra-ui/react";
+import { Button, VStack, Link, textDecoration } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 const buttonHeight = "50px";
 const buttonWidth = "175px";
@@ -14,7 +15,9 @@ export default function Navbuttons() {
         colorScheme="teal"
         borderBottomRadius="0"
       >
-        New Recipe
+        <Link as={NextLink} _hover={"textDecoration=none"} href="/newrecipe">
+          New Recipe
+        </Link>
       </Button>
       <Button
         w={buttonWidth}

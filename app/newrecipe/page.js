@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import { db } from "@/db";
 import { useForm, useFieldArray } from "react-hook-form";
 import {
+  Box,
   Input,
   InputLeftElement,
   Heading,
@@ -12,6 +14,8 @@ import {
   Button,
   Textarea,
   FormErrorMessage,
+  Flex,
+  Spacer,
 } from "@chakra-ui/react";
 
 export default function Recipe() {
@@ -24,11 +28,28 @@ export default function Recipe() {
   } = useForm({
     defaultValues: {
       ingredients: [{ amount: "", unit: "", name: "" }],
+      method: [{ step: "" }],
     },
   });
-  const onSubmit = (data) => console.log(data);
+  // const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => saveRecipe(data);
 
-  const { fields, append, prepend, remove } = useFieldArray({
+  async function saveRecipe({ recipeName, description, ingredients, method }) {
+    console.log(recipeName);
+    try {
+      const id = await db.recipes.add({
+        recipeName: recipeName,
+        description: description,
+        ingredients: ingredients,
+        method: method,
+      });
+      alert(`${recipeName} added successfully with id ${id}`);
+    } catch (error) {
+      alert(`Failed to add ${data.recipeName}: ${error}`);
+    }
+  }
+
+  const { fields, append, remove } = useFieldArray({
     control,
     name: "ingredients",
     rules: {
@@ -36,9 +57,24 @@ export default function Recipe() {
     },
   });
 
+  const {
+    fields: methodFields,
+    append: methodAppend,
+    remove: methodRemove,
+  } = useFieldArray({
+    control,
+    name: "method",
+    rules: {
+      required: "Must have atleast one step",
+    },
+  });
+
+  const stepHeight = "80px";
+  const buttonWidth = "25px";
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Container h="100vh" bg="white">
+      <Container maxW="2xl" bg="white" mb={15}>
         <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
           New Recipe
         </Heading>
@@ -52,13 +88,16 @@ export default function Recipe() {
               minLength: { value: 4, message: "Minimum length should be 4" },
             })}
           />
+          <p>{errors.recipeName?.message}</p>
           <FormLabel htmlFor="description">Description:</FormLabel>
           <Textarea
             placeholder="A delicious breakfast"
             id="description"
             {...register("description")}
           />
-          <FormLabel htmlFor="ingredients">Ingredients:</FormLabel>
+          <FormLabel htmlFor="ingredients" mt={5}>
+            Ingredients:
+          </FormLabel>
           {/* Ingredients */}
           {fields.map((field, index) => {
             return (
@@ -81,34 +120,90 @@ export default function Recipe() {
                   borderLeftRadius="0"
                   borderLeft="none"
                 ></Input>
-                <Button ml={2} onClick={() => remove(index)}>-</Button>
+
+                <Button ml={2} onClick={() => remove(index)} colorScheme="red">
+                  -
+                </Button>
               </InputGroup>
             );
           })}
-          <Button onClick={() => append({ amount: "", unit: "", name: "" })}>
-            +
-          </Button>
+          <Flex>
+            <Spacer />
+            <Button
+              onClick={() => append({ amount: "", unit: "", name: "" })}
+              colorScheme="green"
+              w={buttonWidth}
+            >
+              +
+            </Button>
+          </Flex>
           {/* Method */}
           <FormLabel>Method:</FormLabel>
-          <MethodStep></MethodStep>
+          {methodFields.map((field, index) => {
+            return (
+              <InputGroup key={field.id}>
+                <Flex
+                  w={"100px"}
+                  h={stepHeight}
+                  bg={"gray.100"}
+                  borderLeftRadius={5}
+                  align="center"
+                  justify={"center"}
+                >
+                  <FormLabel>Step {index + 1}:</FormLabel>
+                </Flex>
+                {/* TODO: either change the size of the labels to match or make it a fixed size */}
+                <Textarea
+                  mb={2}
+                  type="text"
+                  rows="5"
+                  resize={"none"}
+                  h={stepHeight}
+                  {...register(`method.${index}.step`)}
+                  borderRadius="0"
+                />
+                <Button
+                  borderLeftRadius="0"
+                  h={stepHeight}
+                  w={buttonWidth}
+                  onClick={() => methodRemove(index)}
+                  colorScheme="red"
+                >
+                  -
+                </Button>
+              </InputGroup>
+            );
+          })}
+          <Flex>
+            <Spacer />
+            <Button
+              onClick={() => methodAppend()}
+              colorScheme="green"
+              w={buttonWidth}
+            >
+              +
+            </Button>
+          </Flex>
+
           <FormErrorMessage>
             {errors.name && errors.name.message}
           </FormErrorMessage>
-          <Button mt={4} isLoading={isSubmitting} type="submit">
-            Save
-          </Button>
+          <Flex>
+            <Spacer />
+            <Button
+              mt={4}
+              isLoading={isSubmitting}
+              type="submit"
+              colorScheme="whatsapp"
+              size={"lg"}
+              w={"15vw"}
+            >
+              Save
+            </Button>
+            <Spacer />
+          </Flex>
         </FormControl>
       </Container>
     </form>
-  );
-}
-
-const stepHeight = "80px";
-function MethodStep({ stepNumber = 0 }) {
-  return (
-    <InputGroup>
-      <InputLeftElement h={stepHeight}>Step {stepNumber}:</InputLeftElement>
-      <Input h={stepHeight}></Input>
-    </InputGroup>
   );
 }

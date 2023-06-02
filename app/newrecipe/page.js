@@ -35,7 +35,6 @@ export default function Recipe() {
   const onSubmit = (data) => saveRecipe(data);
 
   async function saveRecipe({ recipeName, description, ingredients, method }) {
-    console.log(recipeName);
     try {
       const id = await db.recipes.add({
         recipeName: recipeName,
@@ -196,7 +195,7 @@ export default function Recipe() {
               type="submit"
               colorScheme="whatsapp"
               size={"lg"}
-              w={"15vw"}
+              minW={"120px"}
             >
               Save
             </Button>

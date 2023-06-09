@@ -20,7 +20,8 @@ import { useDisclosure } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
-
+const IMAGE =
+  "https://images.pexels.com/photos/7627422/pexels-photo-7627422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
 export default function ImageUpload({ url: propUrl, onUpload }) {
   const [url, setUrl] = useState(propUrl);
@@ -34,6 +35,7 @@ export default function ImageUpload({ url: propUrl, onUpload }) {
     <Flex justify="center" my={4} position="relative">
       <Image
         src={url}
+        fallbackSrc={IMAGE}
         alt="recipe image"
         boxSize={["150px", "250px"]}
         borderRadius={10}
@@ -48,7 +50,7 @@ export default function ImageUpload({ url: propUrl, onUpload }) {
         top="50%"
         left="50%"
         transform="translate(-50%, -50%)"
-        color="gray.500"
+        color="whiteAlpha.800"
         boxSize={["75px", "125px"]}
         onClick={onOpen}
       />
@@ -59,7 +61,7 @@ export default function ImageUpload({ url: propUrl, onUpload }) {
           <ModalHeader>Upload an Image</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            {url}
+            {/* {url} */}
             <FormLabel>Image URL</FormLabel>
             <Input
               onChange={(e) => {
@@ -67,11 +69,6 @@ export default function ImageUpload({ url: propUrl, onUpload }) {
                 setUrl(e.target.value);
               }}
             />
-
-            {/* <FormControl mt={4}>
-                <FormLabel>File on disk</FormLabel>
-                <Input placeholder="..." />
-              </FormControl> */}
           </ModalBody>
 
           <ModalFooter>

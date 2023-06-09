@@ -30,14 +30,16 @@ export default function Navbuttons() {
             View Recipes
           </Button>
         </Link>
-        <Button
-          w={buttonWidth}
-          h={buttonHeight}
-          colorScheme="teal"
-          borderTopRadius="0"
-        >
-          Random Recipe
-        </Button>
+        <Link as={NextLink} _hover={"textDecoration=none"} href="/randomrecipe">
+          <Button
+            w={buttonWidth}
+            h={buttonHeight}
+            colorScheme="teal"
+            borderTopRadius="0"
+          >
+            Random Recipe
+          </Button>
+        </Link>
       </VStack>
     </Center>
   );

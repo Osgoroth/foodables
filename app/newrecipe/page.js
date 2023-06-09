@@ -1,10 +1,13 @@
 "use client";
 import React from "react";
+import ImageUpload from "@/components/recipeform/ImageUpload";
 import { db } from "@/db";
 import { useForm, useFieldArray } from "react-hook-form";
+import useState from "react";
 import {
   Box,
   Input,
+  Image,
   InputLeftElement,
   Heading,
   FormLabel,
@@ -16,35 +19,74 @@ import {
   FormErrorMessage,
   Flex,
   Spacer,
+  VisuallyHidden,
+  useToast,
 } from "@chakra-ui/react";
+const IMAGE =
+  "https://images.pexels.com/photos/7627422/pexels-photo-7627422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+
+const stepHeight = "80px";
+const buttonWidth = "25px";
 
 export default function Recipe() {
+  // const [url, setUrl] = useState(
+  //   "https://images.pexels.com/photos/7627422/pexels-photo-7627422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  // );
+  const toast = useToast();
   const {
     register,
     handleSubmit,
     watch,
     control,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
+      imgUrl: IMAGE,
+      name: "",
+      description: "",
+      category: "",
+      region: "",
       ingredients: [{ amount: "", unit: "", name: "" }],
       method: [{ step: "" }],
     },
   });
-  // const onSubmit = (data) => console.log(data);
+  //  const onSubmit = (data) => console.log(data);
   const onSubmit = (data) => saveRecipe(data);
 
-  async function saveRecipe({ recipeName, description, ingredients, method }) {
+  async function saveRecipe({
+    imgUrl,
+    recipeName,
+    description,
+    ingredients,
+    method,
+  }) {
     try {
       const id = await db.recipes.add({
+        imgUrl: imgUrl,
         recipeName: recipeName,
         description: description,
         ingredients: ingredients,
         method: method,
       });
-      alert(`${recipeName} added successfully with id ${id}`);
+      // show toast for success or failure
+      toast({
+        title: `${recipeName} added successfully`,
+        description: "",
+        status: "success",
+        duration: 4500,
+        isClosable: true,
+      });
+      //reset the fields
+      // alert(`${recipeName} added successfully with id ${id}`);
     } catch (error) {
-      alert(`Failed to add ${data.recipeName}: ${error}`);
+      toast({
+        title: `Failed to add ${recipeName}: ${error}`,
+        description: "",
+        status: "error",
+        duration: 4500,
+        isClosable: true,
+      });
     }
   }
 
@@ -68,22 +110,21 @@ export default function Recipe() {
     },
   });
 
-  const stepHeight = "80px";
-  const buttonWidth = "25px";
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Container maxW="2xl" bg="white" mb={15}>
-        <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
+        <Heading w="100%" textAlign={"left"} fontWeight="normal" mb="2%">
           New Recipe
         </Heading>
         <FormControl isInvalid={errors.name}>
+          {/*  */}
+          <ImageUpload onUpload={(url) => setValue("imgUrl", url)} />
           <FormLabel htmlFor="recipeName">Recipe name:</FormLabel>
           <Input
             id="recipeName"
             placeholder="Egg on toast"
             {...register("recipeName", {
-              required: "This is required",
+              required: "Recipe name is required",
               minLength: { value: 4, message: "Minimum length should be 4" },
             })}
           />
@@ -94,30 +135,33 @@ export default function Recipe() {
             id="description"
             {...register("description")}
           />
+          {/* Ingredients */}
           <FormLabel htmlFor="ingredients" mt={5}>
             Ingredients:
           </FormLabel>
-          {/* Ingredients */}
+          {/* use array split and join to manage the ingredients + unit for later processing (conversion) */}
           {fields.map((field, index) => {
             return (
               <InputGroup mb={2} id="ingredients" key={field.id}>
-                {/* TODO: add labels for accessibility but visually hidden */}
+                <VisuallyHidden>
+                  <FormLabel htmlFor="amount">Ingredient Amount</FormLabel>
+                </VisuallyHidden>
                 <Input
+                  id="amount"
                   {...register(`ingredients.${index}.amount`)}
                   placeholder="amount"
                   borderRight="none"
                   borderRightRadius="0"
                 ></Input>
+
+                <VisuallyHidden>
+                  <FormLabel htmlFor="name">Ingredient name</FormLabel>
+                </VisuallyHidden>
                 <Input
-                  {...register(`ingredients.${index}.unit`)}
-                  placeholder="Unit"
-                  borderRadius="0"
-                ></Input>
-                <Input
+                  id="name"
                   {...register(`ingredients.${index}.name`)}
-                  placeholder="Name"
+                  placeholder="name"
                   borderLeftRadius="0"
-                  borderLeft="none"
                 ></Input>
 
                 <Button ml={2} onClick={() => remove(index)} colorScheme="red">
@@ -149,7 +193,8 @@ export default function Recipe() {
                   align="center"
                   justify={"center"}
                 >
-                  <FormLabel>Step {index + 1}:</FormLabel>
+                  <FormLabel>{index + 1}</FormLabel>
+                  {/* TODO: make the tesxt centered */}
                 </Flex>
                 {/* TODO: either change the size of the labels to match or make it a fixed size */}
                 <Textarea

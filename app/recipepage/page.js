@@ -17,10 +17,11 @@ import {
   Td,
   TableCaption,
   TableContainer,
+  Image,
 } from "@chakra-ui/react";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
-
+const IMAGE =
+  "https://images.pexels.com/photos/7627422/pexels-photo-7627422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 export default function ViewRecipe() {
   const searchParams = useSearchParams();
   const id = Number(searchParams.get("recipe"));
@@ -33,11 +34,23 @@ export default function ViewRecipe() {
     return recipe;
   }, [id]);
 
+  return Recipe(recipe);
+}
+
+function Recipe(recipe) {
   return (
-    //display the recipe
     <Container>
       {recipe?.map((result) => (
-        <Box key={result.id}>
+        <Box key={result.id} position={"relative"}>
+          <Image
+            src={result.imgUrl}
+            fill={true}
+            width="120px"
+            height="150px"
+            alt="recipe image"
+            borderRadius={10}
+            objectFit="cover"
+          />
           <Heading as="h1" size="2xl">
             {result.recipeName}
           </Heading>
@@ -56,9 +69,11 @@ export default function ViewRecipe() {
           <Heading as="h2" size="lg">
             Method:
           </Heading>
-          {result.method.map((method, index) => (
-            <Method key={index} method={method} index={index} />
-          ))}
+          <ul>
+            {result.method.map((method, index) => (
+              <Method key={index} method={method} index={index} />
+            ))}
+          </ul>
         </Box>
       ))}
     </Container>

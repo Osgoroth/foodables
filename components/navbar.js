@@ -22,6 +22,7 @@ const Links = [
   { label: "Home", href: "/" },
   { label: "Recipes", href: "/recipes" },
   { label: "New Recipe", href: "/newrecipe" },
+  { label: "Random Recipe", href: "/randomrecipe" },
 ];
 
 const NavLink = ({ label, href }) => (
